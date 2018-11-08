@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/yuyuye958/GuLu-UI/issues"
   },
-  "homepage": "https://github.com/yuyuye958/GuLu-UI#readme"
+  "homepage": "https://github.com/yuyuye958/GuLu-UI#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
 }
