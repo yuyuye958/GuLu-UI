@@ -1,0 +1,23 @@
+{
+  "name": "gulu-ui",
+  "version": "0.0.1",
+  "description": "用Vue做一个UI框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuyuye958/GuLu-UI.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "allenye\u001b[Y\u001b[D\u001b[D\u001b[D\u001b[D\u001b[A\u001b[C\u001b[C\u001b[C",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuyuye958/GuLu-UI/issues"
+  },
+  "homepage": "https://github.com/yuyuye958/GuLu-UI#readme"
+}
