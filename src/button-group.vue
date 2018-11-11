@@ -4,7 +4,16 @@
     </div>
 </template>
 <script>
-
+    export default {
+        mounted() {
+            for (let node of this.$el.children) {
+                let name = node.nodeName.toLowerCase()
+                if (name !== 'button') {
+                    console.warn(`g-button-group 的子元素应全是 g-button，而你写了 ${name}`)
+                }
+            }
+        }
+    }
 </script>
 <style lang="scss">
     .g-button-group {
@@ -21,7 +30,7 @@
                 border-top-right-radius: var(--border-radius);
                 border-bottom-right-radius: var(--border-radius);
             }
-            &:hover{
+            &:hover {
                 position: relative;
                 z-index: 1;
             }
