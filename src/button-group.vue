@@ -23,6 +23,7 @@
             border-radius: 0;
             margin-left: -1px;
             &:first-child {
+                margin-left: 0;
                 border-top-left-radius: var(--border-radius);
                 border-bottom-left-radius: var(--border-radius);
             }
