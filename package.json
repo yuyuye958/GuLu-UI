@@ -2,7 +2,7 @@
   "name": "allen-gulu-2018",
   "version": "0.0.1",
   "description": "用Vue做一个UI框架",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
