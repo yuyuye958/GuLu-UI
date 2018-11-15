@@ -1,6 +1,6 @@
 {
   "name": "allen-gulu-2018",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "用Vue做一个UI框架",
   "main": "dist/index.js",
   "scripts": {
