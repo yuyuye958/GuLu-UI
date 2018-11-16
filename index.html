@@ -17,7 +17,7 @@
         <g-input value="allen3"></g-input>
     </div>
     <div class="box">
-        <g-input value="allen3" error="姓名不能少于两个字"></g-input>
+        <g-input value="allen3" @change="inputChange"></g-input>
     </div>
     <div class="box">
         <g-button :loading="loading1" @click="loading1 = !loading1">
