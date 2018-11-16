@@ -6,10 +6,11 @@
 <script>
     import './svg'
     export default {
+        name: 'GuLu-Icon',
         props: ['name']
     }
 </script>
-<style class="scss">
+<style class="scss" scoped>
     .g-icon {
         width: 1em;
         height: 1em;
