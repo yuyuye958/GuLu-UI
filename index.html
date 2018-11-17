@@ -12,12 +12,13 @@
 
 <div id="app">
     <div class="box">
-        <g-input value="allen1" :disabled="true"></g-input>
-        <g-input value="allen2" readonly></g-input>
-        <g-input value="allen3"></g-input>
+        <g-input value="allen1"></g-input>
+        <g-input value="allen2" disabled></g-input>
+        <g-input value="allen3" readonly></g-input>
     </div>
     <div class="box">
-        <g-input value="allen3" @change="inputChange"></g-input>
+        <g-input @change="inputChange" v-model="message"></g-input>
+        <p>{{message}}</p>
     </div>
     <div class="box">
         <g-button :loading="loading1" @click="loading1 = !loading1">
