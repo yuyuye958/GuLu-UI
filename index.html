@@ -11,6 +11,11 @@
 <body>
 
 <div id="app">
+    <g-row>
+        <g-col span="2">1</g-col>
+        <g-col span="22">2</g-col>
+    </g-row>
+
     <div class="box">
         <g-input value="allen1"></g-input>
         <g-input value="allen2" disabled></g-input>
@@ -19,6 +24,7 @@
     <div class="box">
         <g-input @change="inputChange" v-model="message"></g-input>
         <p>{{message}}</p>
+        <button @click="message+=1">+1</button>
     </div>
     <div class="box">
         <g-button :loading="loading1" @click="loading1 = !loading1">
