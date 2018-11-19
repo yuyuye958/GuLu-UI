@@ -69,7 +69,7 @@
                     ...createClasses({span, offset}),
                     ...createClasses(pad, 'pad-'),
                     ...createClasses(narrowPc, 'narrow-pc-'),
-                    ...createClasses(pc, 'narrow-pc-'),
+                    ...createClasses(pc, 'pc-'),
                     ...createClasses(largePc, 'large-pc-')
                 ]
             },
