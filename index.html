@@ -9,8 +9,23 @@
     <title>轱辘UI</title>
 </head>
 <body>
+<style>
+    .demo {
+        border: 1px solid red;
+        min-height: 100px;
+    }
+</style>
 
 <div id="app">
+    <g-layout>
+        <g-header class="demo">header</g-header>
+        <g-layout>
+            <g-sider class="demo">sider</g-sider>
+            <g-content class="demo">content</g-content>
+        </g-layout>
+        <g-footer class="demo">footer</g-footer>
+    </g-layout>
+
     <g-row>
         <g-col :span="24"
                :pad="{span:16, offset:0}"
