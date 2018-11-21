@@ -42,6 +42,7 @@ new Vue({
         },
         showToast() {
             this.$toast('您的请求已成功<a href="//www.baidu.com">baidu</a>', {
+                position: 'middle',
                 autoCloseDelay: 5,
                 closeButton: {
                     text: '知道了',
