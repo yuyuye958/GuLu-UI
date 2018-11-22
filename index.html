@@ -17,6 +17,36 @@
 </style>
 
 <div id="app">
+    <!--<g-tabs :selected="selectedTab" @:update:selected="selectedTab = $event">-->
+    <g-tabs :selected.sync="selectedTab">
+        <g-tabs-nav>
+            <template slot="actions">
+                <button>设置</button>
+            </template>
+            <g-tabs-item name="sports">
+                <g-icon name="right"></g-icon>
+                体育
+            </g-tabs-item>
+            <g-tabs-item name="comic" disabled>
+                动漫
+            </g-tabs-item>
+            <g-tabs-item name="games">
+                游戏
+            </g-tabs-item>
+        </g-tabs-nav>
+        <g-tabs-body>
+            <g-tabs-pane name="sports">
+                体育体育体育
+            </g-tabs-pane>
+            <g-tabs-pane name="comic">
+                动漫动漫动漫
+            </g-tabs-pane>
+            <g-tabs-pane name="games">
+                游戏游戏游戏
+            </g-tabs-pane>
+        </g-tabs-body>
+    </g-tabs>
+
     <button @click="showToast">showToast</button>
 
     <g-layout>

@@ -12,6 +12,12 @@ import Content from './content'
 import Footer from './footer'
 import Toast from './Toast'
 import Plugin from './plugin' // 插件
+import Tabs from './tabs'
+import TabsNav from './tabs-nav'
+import TabsBody from './tabs-body'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
+
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -26,6 +32,11 @@ Vue.component('g-content', Content)
 Vue.component('g-footer', Footer)
 Vue.component('g-toast', Toast)
 Vue.use(Plugin)
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-nav', TabsNav)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-pane', TabsPane)
 
 
 new Vue({
@@ -35,6 +46,7 @@ new Vue({
         loading2: true,
         loading3: false,
         message: '',
+        selectedTab: 'sports'
     },
     methods: {
         inputChange(e) {
