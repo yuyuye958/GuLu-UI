@@ -34,23 +34,23 @@ new Vue({
         loading1: false,
         loading2: true,
         loading3: false,
-        message: ''
+        message: '',
     },
     methods: {
         inputChange(e) {
             console.log(e)
         },
         showToast() {
-            this.$toast('您的请求已成功<a href="//www.baidu.com">baidu</a>', {
-                position: 'middle',
-                autoCloseDelay: 5,
+            this.$toast('您的请求已成功', {
+                position: 'top',
+                autoClose: 5,
                 closeButton: {
                     text: '知道了',
                     // callback(){
                     //     console.log('这里是closeButton的callback')
                     // }
                 },
-                enableHtml: true
+                enableHtml: false
             })
         }
     }
