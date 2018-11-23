@@ -21,7 +21,7 @@
                 }
             }
         },
-        data(){
+        data() {
             return {
                 eventBus: new Vue()
             }
@@ -32,7 +32,15 @@
             }
         },
         mounted() {
-            this.eventBus.$emit('update:selected', this.selected)
+            this.$children.forEach((vm) => {
+                if (vm.$options.name === 'GuLu-Tabs-Nav') {
+                    vm.$children.forEach((vmChild) => {
+                        if (vmChild.$options.name === 'GuLu-Tabs-Item' && vmChild.name === this.selected) {
+                            this.eventBus.$emit('update:selected', this.selected, vmChild)
+                        }
+                    })
+                }
+            })
         }
     }
 </script>

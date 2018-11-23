@@ -31,26 +31,27 @@
         },
         created() {
             this.eventBus.$on('update:selected', (name) => {
-                if (name === this.name) {
-                    this.active = true
-                } else {
-                    this.active = false
-                }
+                this.active = name === this.name;
             })
         },
         methods: {
             xxx() {
-                this.eventBus.$emit('update:selected', this.name)
+                this.eventBus.$emit('update:selected', this.name, this)
             }
         }
     }
 </script>
 <style lang="scss" scoped>
+    $blue: blue;
     .tabs-item {
         flex-shrink: 0;
         padding: 0 2em;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
         &.active {
-            background-color: red;
+            color: $blue;
         }
     }
 </style>
