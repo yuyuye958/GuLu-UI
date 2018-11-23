@@ -11,27 +11,29 @@
     export default {
         name: 'GuLu-Tabs-Nav',
         inject: ['eventBus'],
-        created() {
+        mounted() {
             this.eventBus.$on('update:selected', (item, vm) => {
-
+                let {width, left} = vm.$el.getBoundingClientRect()
+                this.$refs.line.style.width = `${width}px`
+                this.$refs.line.style.transform = `translateX(${left}px)`
             })
         },
     }
 </script>
 <style lang="scss" scoped>
-    $tabs-height: 40px;
     $line-color: blue;
+    $border-color: #ddd;
     .tabs-nav {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        height: $tabs-height;
         position: relative;
+        border-bottom: 1px solid $border-color;
         .line {
             position: absolute;
             bottom: 0;
-            border-bottom: 1px solid $line-color;
-            width: 50px;
+            border-bottom: 2px solid $line-color;
+            transition: all .4s;
         }
         .actions-wrapper {
             margin-left: auto;

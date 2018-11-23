@@ -7,8 +7,6 @@
     export default {
         name: 'GuLu-Tabs-Body',
         inject: ['eventBus'],
-        created(){
-        }
     }
 </script>
 <style lang="scss" scoped>

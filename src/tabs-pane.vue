@@ -25,9 +25,9 @@
                 }
             }
         },
-        created() {
+        created: function () {
             this.eventBus.$on('update:selected', (name) => {
-                this.active = name === this.name;
+                this.active = name === this.name
             })
         }
     }
@@ -35,7 +35,6 @@
 <style lang="scss" scoped>
     .tabs-pane {
         &.active {
-            background-color: red;
         }
     }
 </style>
