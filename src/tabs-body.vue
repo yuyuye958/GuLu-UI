@@ -5,9 +5,15 @@
 </template>
 <script>
     export default {
-        name: 'GuLu-Tabs-Body'
+        name: 'GuLu-Tabs-Body',
+        inject: ['eventBus'],
+        created(){
+            this.eventBus.$on('update:selected', (name) => {
+                console.log(name)
+            })
+        }
     }
 </script>
-<style>
+<style lang="scss" scoped>
 
 </style>
