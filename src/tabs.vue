@@ -32,6 +32,9 @@
             }
         },
         mounted() {
+            if (this.$children.length === 0) {
+                console && console.warn && console.warn('tabs里没写子组件')
+            }
             this.$children.forEach((vm) => {
                 if (vm.$options.name === 'GuLu-Tabs-Nav') {
                     vm.$children.forEach((vmChild) => {
