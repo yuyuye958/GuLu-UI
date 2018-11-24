@@ -16,7 +16,14 @@
     }
 </style>
 
-<div id="app">
+<div id="app" style="padding: 100px">
+    <g-popover>
+        <template slot="content">
+            <div>popover的内容</div>
+        </template>
+        <button>popover</button>
+    </g-popover>
+
     <!--<g-tabs :selected="selectedTab" @:update:selected="selectedTab = $event">-->
     <g-tabs :selected.sync="selectedTab">
         <g-tabs-nav>
@@ -99,7 +106,7 @@
         <g-input value="allen3" readonly></g-input>
     </div>
     <div class="box">
-        <g-input @change="inputChange" v-model="message"></g-input>
+        <g-input v-model="message"></g-input>
         <p>{{message}}</p>
         <button @click="message+=1">+1</button>
     </div>
