@@ -19,9 +19,27 @@
 <div id="app" style="padding: 100px">
     <g-popover>
         <template slot="content">
-            <div>popover的内容</div>
+            <div>popover的内容popover的内容</div>
         </template>
-        <button>popover</button>
+        <g-button>popover</g-button>
+    </g-popover>
+    <g-popover position="bottom">
+        <template slot="content">
+            <div>popover的内容popover的内容</div>
+        </template>
+        <g-button>popover</g-button>
+    </g-popover>
+    <g-popover position="left">
+        <template slot="content">
+            <div>popover的内容popover的内容</div>
+        </template>
+        <g-button>popover</g-button>
+    </g-popover>
+    <g-popover position="right">
+        <template slot="content">
+            <div>popover的内容popover的内容</div>
+        </template>
+        <g-button>popover</g-button>
     </g-popover>
 
     <!--<g-tabs :selected="selectedTab" @:update:selected="selectedTab = $event">-->
