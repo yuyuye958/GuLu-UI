@@ -30,19 +30,26 @@
                 document.body.appendChild(this.$refs.contentWrapper)
                 let {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect()
                 let {height: height2} = this.$refs.contentWrapper.getBoundingClientRect()
-                if (this.position === 'top') {
-                    this.$refs.contentWrapper.style.left = window.scrollX + left + 'px'
-                    this.$refs.contentWrapper.style.top = window.scrollY + top + 'px'
-                } else if (this.position === 'bottom') {
-                    this.$refs.contentWrapper.style.left = window.scrollX + left + 'px'
-                    this.$refs.contentWrapper.style.top = window.scrollY + top + height + 'px'
-                } else if (this.position === 'left') {
-                    this.$refs.contentWrapper.style.left = window.scrollX + left + 'px'
-                    this.$refs.contentWrapper.style.top = window.scrollY + top + (height - height2) / 2 + 'px'
-                } else if (this.position === 'right') {
-                    this.$refs.contentWrapper.style.left = window.scrollX + left + width + 'px'
-                    this.$refs.contentWrapper.style.top = window.scrollY + top + (height - height2) / 2 + 'px'
+                let positionProps = {
+                    top: {
+                        left: window.scrollX + left,
+                        top: window.scrollY + top
+                    },
+                    bottom: {
+                        left: window.scrollX + left,
+                        top: window.scrollY + top + height
+                    },
+                    left: {
+                        left: window.scrollX + left,
+                        top: window.scrollY + top + (height - height2) / 2
+                    },
+                    right: {
+                        left: window.scrollX + left + width,
+                        top: window.scrollY + top + (height - height2) / 2
+                    }
                 }
+                this.$refs.contentWrapper.style.top = positionProps[this.position].top + 'px'
+                this.$refs.contentWrapper.style.left = positionProps[this.position].left + 'px'
             },
             onClickDocument(e) {
                 if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
