@@ -1,7 +1,7 @@
 <template>
-    <div ref="popover" class="popover" @click="onClick">
+    <div ref="popover" class="popover">
         <div ref="contentWrapper" class="content-wrapper" :class="{[`position-${position}`]: true}" v-if="visible">
-            <slot name="content"></slot>
+            <slot name="content" :close="close"></slot>
         </div>
         <span ref="triggerWrapper" class="trigger-wrapper">
             <slot></slot>
@@ -22,6 +22,13 @@
                 default: 'top',
                 validator(value) {
                     return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
+                }
+            },
+            trigger: {
+                ype: String,
+                default: 'click',
+                validator(value) {
+                    return ['click', 'hover'].indexOf(value) >= 0
                 }
             }
         },
@@ -83,7 +90,21 @@
             }
         },
         mounted() {
-        }
+            if (this.trigger === 'click') {
+                this.$refs.popover.addEventListener('click', this.onClick)
+            } else {
+                this.$refs.popover.addEventListener('mouseenter', this.show)
+                this.$refs.popover.addEventListener('mouseleave', this.close)
+            }
+        },
+        destroyed() {
+            if (this.trigger === 'click') {
+                this.$refs.popover.removeEventListener('click', this.onClick)
+            } else {
+                this.$refs.popover.removeEventListener('mouseenter', this.show)
+                this.$refs.popover.removeEventListener('mouseleave', this.close)
+            }
+        },
     }
 </script>
 <style lang="scss" scoped>
@@ -120,10 +141,12 @@
             &::before {
                 top: calc(100% + 1px);
                 border-top-color: $border-color;
+                border-bottom: none;
             }
             &::after {
                 top: 100%;
                 border-top-color: white;
+                border-bottom: none;
             }
         }
         &.position-bottom {
@@ -132,12 +155,14 @@
                 left: 8px;
             }
             &::before {
-                bottom: 100%;
+                bottom: calc(100% + 1px);
                 border-bottom-color: $border-color;
+                border-top: none;
             }
             &::after {
-                bottom: calc(100% - 1px);
+                bottom: 100%;
                 border-bottom-color: white;
+                border-top: none;
             }
         }
         &.position-left {
@@ -151,10 +176,12 @@
             &::before {
                 left: calc(100% + 1px);
                 border-left-color: $border-color;
+                border-right: none;
             }
             &::after {
                 left: 100%;
                 border-left-color: white;
+                border-right: none;
             }
         }
         &.position-right {
@@ -166,10 +193,12 @@
             &::before {
                 right: 100%;
                 border-right-color: $border-color;
+                border-left: none;
             }
             &::after {
                 right: calc(100% - 1px);
                 border-right-color: white;
+                border-left: none;
             }
         }
     }

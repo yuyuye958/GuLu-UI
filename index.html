@@ -19,13 +19,16 @@
 <div id="app" style="padding: 100px">
     <g-popover>
         <template slot="content">
-            <div>popover的内容popover的内容</div>
+            <div>popover的内容popover的内容
+                <a href="http://www.qq.com">QQ</a>
+            </div>
         </template>
         <g-button>popover</g-button>
     </g-popover>
     <g-popover position="bottom">
-        <template slot="content">
+        <template slot="content" slot-scope="{close}">
             <div>popover的内容popover的内容</div>
+            <g-button @click="close">关闭</g-button>
         </template>
         <g-button>popover</g-button>
     </g-popover>
@@ -35,7 +38,7 @@
         </template>
         <g-button>popover</g-button>
     </g-popover>
-    <g-popover position="right">
+    <g-popover position="right" trigger="hover">
         <template slot="content">
             <div>popover的内容popover的内容</div>
         </template>
