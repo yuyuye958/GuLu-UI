@@ -52,7 +52,7 @@ new Vue({
         loading3: false,
         message: '',
         selectedTab: 'sports',
-        selectedCollapse: '2'
+        selectedCollapse: ['2','3']
     },
     methods: {
         showToast() {
