@@ -1,6 +1,6 @@
 <template>
-    <div class="collapse-item" @click="open=!open">
-        <div class="title">
+    <div class="collapse-item">
+        <div class="title" @click="toggle">
             {{title}}
         </div>
         <div class="content" v-if="open">
@@ -11,15 +11,41 @@
 <script>
     export default {
         name: "GuLu-Collapse-Item",
+        inject: ['eventBus'],
         props: {
             title: {
+                type: String,
+                required: true
+            },
+            name: {
                 type: String,
                 required: true
             }
         },
         data() {
             return {
-                open: false
+                open: false,
+                single: false
+            }
+        },
+        mounted() {
+            this.eventBus && this.eventBus.$on('update:selected', (name) => {
+                if (this.name === name) {
+                    this.open = true
+                } else {
+                    if (this.single) {
+                        this.open = false
+                    }
+                }
+            })
+        },
+        methods: {
+            toggle() {
+                if (this.open) {
+                    this.open = false
+                } else {
+                    this.eventBus && this.eventBus.$emit('update:selected', this.name)
+                }
             }
         }
     }
@@ -39,7 +65,6 @@
             align-items: center;
         }
         .content {
-            color: #a2a2a2;
             padding: 0 14px;
             min-height: 32px;
             display: flex;

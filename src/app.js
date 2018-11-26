@@ -51,7 +51,8 @@ new Vue({
         loading2: true,
         loading3: false,
         message: '',
-        selectedTab: 'sports'
+        selectedTab: 'sports',
+        selectedCollapse: '2'
     },
     methods: {
         showToast() {
