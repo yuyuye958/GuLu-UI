@@ -1,7 +1,7 @@
 <template>
     <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="onClick">
         <g-icon class="icon" v-if="icon && !selfLoading" :name="icon"></g-icon>
-        <g-icon class="icon loading" v-if="loading && selfLoading" name="loading"></g-icon>
+        <g-icon class="icon loading" v-show="loading && selfLoading" name="loading"></g-icon>
         <div class="g-button-content">
             <slot></slot>
         </div>
