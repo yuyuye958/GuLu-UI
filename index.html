@@ -5,11 +5,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
     <title>轱辘UI</title>
 </head>
 <body>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .box {
+        margin: 20px;
+    }
+
     .demo {
         border: 1px solid red;
         min-height: 100px;
@@ -139,13 +152,13 @@
         <button @click="message+=1">+1</button>
     </div>
     <div class="box">
-        <g-button :loading="loading1" @click="loading1 = !loading1">
+        <g-button loading>
             按钮
         </g-button>
-        <g-button icon="settings" :loading="loading2" @click="loading2 = !loading2">
+        <g-button icon="settings" loading>
             按钮
         </g-button>
-        <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3 = !loading3">
+        <g-button icon="settings" icon-position="right" loading>
             按钮
         </g-button>
         <g-button-group>

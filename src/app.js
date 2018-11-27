@@ -47,9 +47,6 @@ Vue.component('g-collapse-item', CollapseItem)
 new Vue({
     el: '#app',
     data: {
-        loading1: false,
-        loading2: true,
-        loading3: false,
         message: '',
         selectedTab: 'sports',
         selectedCollapse: ['2','3']
@@ -67,6 +64,6 @@ new Vue({
                 },
                 enableHtml: false
             })
-        }
+        },
     }
 })
