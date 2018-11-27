@@ -8,5 +8,6 @@ title: Button 按钮
 
 ## 基础用法
 
+<ClientOnly>
   <button-demo1></button-demo1>
-
+</ClientOnly>
