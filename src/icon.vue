@@ -13,9 +13,8 @@
 </script>
 <style class="scss" scoped>
     .g-icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.15em;
+        width: 1.15em;
+        height: 1.15em;
         fill: currentColor;
         overflow: hidden;
     }

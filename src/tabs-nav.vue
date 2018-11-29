@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-nav">
+    <div class="tabs-nav" ref="tabsNav">
         <slot></slot>
         <div class="line" ref="line"></div>
         <div class="actions-wrapper">
@@ -14,14 +14,15 @@
         mounted() {
             this.eventBus.$on('update:selected', (item, vm) => {
                 let {width, left} = vm.$el.getBoundingClientRect()
+                let tabsNavLeft = this.$refs.tabsNav.getBoundingClientRect().left
                 this.$refs.line.style.width = `${width}px`
-                this.$refs.line.style.transform = `translateX(${left}px)`
+                this.$refs.line.style.transform = `translateX(${left-tabsNavLeft}px)`
             })
         },
     }
 </script>
 <style lang="scss" scoped>
-    $line-color: blue;
+    $line-color: #3eaf7c;
     $border-color: #ddd;
     .tabs-nav {
         display: flex;
@@ -31,9 +32,9 @@
         border-bottom: 1px solid $border-color;
         .line {
             position: absolute;
-            bottom: 0;
-            border-bottom: 2px solid $line-color;
-            transition: all .4s;
+            bottom: -1px;
+            border-bottom: 3px solid $line-color;
+            transition: all .3s;
         }
         .actions-wrapper {
             margin-left: auto;

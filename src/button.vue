@@ -88,7 +88,7 @@
         }
         .icon {
             order: 1;
-            margin-right: .2em;
+            margin-right: .3em;
         }
         .g-button-content {
             order: 2;
@@ -97,7 +97,7 @@
             .icon {
                 order: 2;
                 margin-right: 0;
-                margin-left: .2em;
+                margin-left: .3em;
             }
             .g-button-content {
                 order: 1;

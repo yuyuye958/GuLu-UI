@@ -44,12 +44,14 @@
     }
 </script>
 <style lang="scss" scoped>
-    $item-border-color: #ddd;
+    $item-border-color: rgba(0, 0, 0, .15);
+    $item-background-color: rgba(0, 0, 0, .04);
     $border-radius: 4px;
     .collapse-item {
         margin-top: -1px;
         .title {
             border: 1px solid $item-border-color;
+            background-color: $item-background-color;
             margin-left: -1px;
             margin-right: -1px;
             padding: 0 14px;

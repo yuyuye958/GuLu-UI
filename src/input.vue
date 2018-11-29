@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :class="{error}">
+    <div class="inputWrapper" :class="{error}">
         <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
                @change="$emit('change', $event.target.value)"
                @input="$emit('input', $event.target.value)"
@@ -45,7 +45,7 @@
     $border-radius: 4px;
     $font-size: 12px;
     $red: #F1453D;
-    .wrapper {
+    .inputWrapper {
         font-size: $font-size;
         display: inline-flex;
         align-items: center;

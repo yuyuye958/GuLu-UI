@@ -49,7 +49,7 @@
     }
 </script>
 <style lang="scss" scoped>
-    $blue: blue;
+    $item-active: #3eaf7c;
     .tabs-item {
         flex-shrink: 0;
         padding: 1em;
@@ -58,7 +58,7 @@
         align-items: center;
         cursor: pointer;
         &.active {
-            color: $blue;
+            color: $item-active;
         }
         &.disabled {
             cursor: not-allowed;

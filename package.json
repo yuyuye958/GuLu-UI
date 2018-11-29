@@ -1,7 +1,7 @@
 {
-  "name": "allen-gulu-2018",
-  "version": "0.0.3",
-  "description": "用Vue做一个UI框架",
+  "name": "vue-gulu-ui",
+  "version": "1.0.3",
+  "description": "用Vue做的一个UI框架",
   "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",

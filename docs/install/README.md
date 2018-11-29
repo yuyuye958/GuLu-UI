@@ -17,6 +17,6 @@ $ git clone git@github.com:yuyuye958/GuLu-UI.git
 推荐使用npm / yarn来安装，享受生态圈和工具链带来的便利。
 
 ```
-$ npm install allen-gulu-2018 --save
-$ yarn add allen-gulu-2018 --save
+$ npm install vue-gulu-ui --save
+$ yarn add vue-gulu-ui --save
 ```

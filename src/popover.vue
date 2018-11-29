@@ -139,12 +139,12 @@
                 left: 8px;
             }
             &::before {
-                top: calc(100% + 1px);
+                top: 100%;
                 border-top-color: $border-color;
                 border-bottom: none;
             }
             &::after {
-                top: 100%;
+                top: calc(100% - 1px);
                 border-top-color: white;
                 border-bottom: none;
             }
@@ -174,12 +174,12 @@
                 transform: translateY(-50%);
             }
             &::before {
-                left: calc(100% + 1px);
+                left: 100%;
                 border-left-color: $border-color;
                 border-right: none;
             }
             &::after {
-                left: 100%;
+                left: calc(100% - 1px);
                 border-left-color: white;
                 border-right: none;
             }

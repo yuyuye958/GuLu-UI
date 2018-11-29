@@ -1,5 +1,5 @@
 <template>
-    <div class="sider">
+    <div class="g-sider">
         <slot></slot>
     </div>
 </template>
