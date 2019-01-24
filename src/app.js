@@ -20,6 +20,7 @@ import TabsPane from './tabs-pane'
 import Popover from './popover'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
+import Sticky from './sticky'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -42,28 +43,29 @@ Vue.component('g-tabs-pane', TabsPane)
 Vue.component('g-popover', Popover)
 Vue.component('g-collapse', Collapse)
 Vue.component('g-collapse-item', CollapseItem)
+Vue.component('g-sticky', Sticky)
 
 
 new Vue({
-    el: '#app',
-    data: {
-        message: '',
-        selectedTab: 'sports',
-        selectedCollapse: ['2','3']
-    },
-    methods: {
-        showToast() {
-            this.$toast('您的请求已成功', {
-                position: 'top',
-                autoClose: 5,
-                closeButton: {
-                    text: '知道了',
-                    // callback(){
-                    //     console.log('这里是closeButton的callback')
-                    // }
-                },
-                enableHtml: false
-            })
+  el: '#app',
+  data: {
+    message: '',
+    selectedTab: 'sports',
+    selectedCollapse: ['2', '3']
+  },
+  methods: {
+    showToast() {
+      this.$toast('您的请求已成功', {
+        position: 'top',
+        autoClose: 5,
+        closeButton: {
+          text: '知道了',
+          // callback(){
+          //     console.log('这里是closeButton的callback')
+          // }
         },
-    }
+        enableHtml: false
+      })
+    },
+  }
 })
