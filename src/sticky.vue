@@ -20,10 +20,12 @@
       }
     },
     mounted() {
-      let {top, height} = this.getTopAndHeight()
-      this.$refs.stickyWrapper.style.height = `${height}px`
+      // 这里的 height 是初始的高度，会造成bug，所以要在改变sticky状态时获得高度
+      let top = this.getTop()
       window.addEventListener('scroll', () => {
         if (window.scrollY > top) {
+          let height = this.getHeight()
+          this.$refs.stickyWrapper.style.height = `${height}px`
           this.sticky = true
         } else {
           this.sticky = false
@@ -31,9 +33,13 @@
       })
     },
     methods: {
-      getTopAndHeight() {
-        let {top, height} = this.$refs.stickyWrapper.getBoundingClientRect()
-        return {top: top + window.scrollY, height: height}
+      getTop() {
+        let {top} = this.$refs.stickyWrapper.getBoundingClientRect()
+        return top + window.scrollY
+      },
+      getHeight() {
+        let {height} = this.$refs.stickyWrapper.getBoundingClientRect()
+        return height
       }
     }
   }
