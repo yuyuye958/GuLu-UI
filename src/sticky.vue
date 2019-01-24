@@ -1,6 +1,6 @@
 <template>
   <div class="stickyWrapper" ref="stickyWrapper" :style="{height}">
-    <div class="g-sticky" :class="{sticky}" :style="{left, width}">
+    <div class="g-sticky" :class="{sticky}" :style="{left, width, top}">
       <slot></slot>
     </div>
   </div>
@@ -19,6 +19,7 @@
         sticky: false,
         left: undefined,
         width: undefined,
+        top: undefined,
         height: undefined
       }
     },
@@ -37,13 +38,18 @@
       },
       _scrollHandler() {
         let top = this.getTop()
-        if (window.scrollY > top) {
+        if (window.scrollY > top - this.distance) {
           let {left, width, height} = this.$refs.stickyWrapper.getBoundingClientRect()
           this.left = left + 'px'
           this.width = width + 'px'
           this.height = height + 'px'
+          this.top = this.distance + 'px'
           this.sticky = true
         } else {
+          this.left = undefined
+          this.width = undefined
+          this.height = undefined
+          this.top = undefined
           this.sticky = false
         }
       }
@@ -55,7 +61,6 @@
     .g-sticky {
       &.sticky {
         position: fixed;
-        top: 0;
         z-index: 100;
         background: red;
       }
