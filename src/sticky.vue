@@ -62,7 +62,6 @@
       &.sticky {
         position: fixed;
         z-index: 100;
-        background: red;
       }
     }
   }
