@@ -21,6 +21,7 @@ import Popover from './popover'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
 import Sticky from './sticky'
+import Cascader from './cascader'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -44,6 +45,7 @@ Vue.component('g-popover', Popover)
 Vue.component('g-collapse', Collapse)
 Vue.component('g-collapse-item', CollapseItem)
 Vue.component('g-sticky', Sticky)
+Vue.component('g-cascader', Cascader)
 
 
 new Vue({
@@ -51,7 +53,47 @@ new Vue({
   data: {
     message: '',
     selectedTab: 'sports',
-    selectedCollapse: ['2', '3']
+    selectedCollapse: ['2', '3'],
+    cascaderData: [
+      {
+        name: '江苏',
+        children: [
+          {
+            name: '苏州',
+            children: [
+              {name: '苏州1'},
+              {name: '苏州2'}
+            ]
+          },
+          {
+            name: '南通',
+            children: [
+              {name: '南通1'},
+              {name: '南通2'}
+            ]
+          }
+        ]
+      },
+      {
+        name: '浙江',
+        children: [
+          {
+            name: '杭州',
+            children: [
+              {name: '杭州1'},
+              {name: '杭州2'}
+            ]
+          },
+          {
+            name: '宁波',
+            children: [
+              {name: '宁波1'},
+              {name: '宁波2'}
+            ]
+          }
+        ]
+      }
+    ]
   },
   methods: {
     showToast() {
