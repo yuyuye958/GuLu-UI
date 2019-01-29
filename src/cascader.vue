@@ -1,12 +1,9 @@
 <template>
   <div class="g-cascader">
-    <div class="trigger">
-      <slot></slot>
+    <div class="trigger" @click="popoverVisible = !popoverVisible">
     </div>
-    <div class="popover">
-      <div v-for="item in source">
-        <g-cascader-item :source="item"></g-cascader-item>
-      </div>
+    <div class="popover" v-if="popoverVisible">
+      <g-cascader-item :items="source"></g-cascader-item>
     </div>
   </div>
 </template>
@@ -22,6 +19,11 @@
       source: {
         type: Array
       }
+    },
+    data() {
+      return {
+        popoverVisible: false
+      }
     }
   }
 </script>
@@ -29,6 +31,20 @@
   @import "var";
 
   .g-cascader {
-
+    position: relative;
+    .trigger {
+      border: 1px solid red;
+      height: 30px;
+      width: 150px;
+    }
+    .popover {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: flex;
+      border: 1px solid red;
+      background-color: white;
+      height: 150px;
+    }
   }
 </style>
