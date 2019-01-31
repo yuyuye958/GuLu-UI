@@ -1,21 +1,28 @@
 <template>
-  <div class="g-cascader-item">
+  <div class="g-cascader-item" :style="{height: height}">
     <div class="left">
-      <div class="label" v-for="item in items" @click="leftSelected = item">
+      <div class="label" v-for="(item,index) in items" :key="index" @click="leftSelected = item">
         {{item.name}}
+        <g-icon name="right" class="icon" v-if="item.children"></g-icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
-      <g-cascader-item :items="rightItems"></g-cascader-item>
+      <g-cascader-item :items="rightItems" :height="height"></g-cascader-item>
     </div>
   </div>
 </template>
 <script>
+  import gIcon from './icon'
+
   export default {
     name: 'gCascaderItem',
+    components: {gIcon},
     props: {
       items: {
         type: Array
+      },
+      height: {
+        type: String
       }
     },
     data() {
@@ -35,11 +42,28 @@
   }
 </script>
 <style scoped lang="scss">
+  @import "var";
+
   .g-cascader-item {
     display: flex;
     align-items: flex-start;
+    height: 100px;
     .left {
-      border: 1px solid red;
+      height: 100%;
+      padding: 0.3em 0;
+    }
+    .right {
+      height: 100%;
+      border-left: 1px solid $border-color-light;
+    }
+    .label {
+      padding: 0.3em 1em;
+      display: flex;
+      align-items: center;
+    }
+    .icon {
+      margin-left: 0.5em;
+      transform: scale(0.6);
     }
   }
 </style>

@@ -2,8 +2,8 @@
   <div class="g-cascader">
     <div class="trigger" @click="popoverVisible = !popoverVisible">
     </div>
-    <div class="popover" v-if="popoverVisible">
-      <g-cascader-item :items="source"></g-cascader-item>
+    <div class="popover-wrapper" v-if="popoverVisible">
+      <g-cascader-item :items="source" :height="popoverHeight"></g-cascader-item>
     </div>
   </div>
 </template>
@@ -18,6 +18,9 @@
     props: {
       source: {
         type: Array
+      },
+      popoverHeight: {
+        type: String
       }
     },
     data() {
@@ -37,14 +40,13 @@
       height: 30px;
       width: 150px;
     }
-    .popover {
+    .popover-wrapper {
       position: absolute;
       top: 100%;
       left: 0;
       display: flex;
-      border: 1px solid red;
+      box-shadow: $box-shadow;
       background-color: white;
-      height: 150px;
     }
   }
 </style>
