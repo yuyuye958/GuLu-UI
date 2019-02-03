@@ -1,9 +1,11 @@
 <template>
   <div class="g-cascader">
     <div class="trigger" @click="popoverVisible = !popoverVisible">
+      <slot></slot>
     </div>
     <div class="popover-wrapper" v-if="popoverVisible">
-      <g-cascader-item :items="source" :height="popoverHeight"></g-cascader-item>
+      <g-cascader-item :items="source" :height="popoverHeight" :selected="selected"
+                       @update:selected="updateSelected"></g-cascader-item>
     </div>
   </div>
 </template>
@@ -21,11 +23,22 @@
       },
       popoverHeight: {
         type: String
+      },
+      selected: {
+        type: Array,
+        default: () => {
+          return []
+        }
       }
     },
     data() {
       return {
         popoverVisible: false
+      }
+    },
+    methods: {
+      updateSelected(newSelected) {
+        this.$emit('update:selected', newSelected)
       }
     }
   }

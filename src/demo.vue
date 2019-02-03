@@ -1,7 +1,8 @@
 <template>
   <div style="margin: 50px">
-    <g-cascader :source="cascaderData" popover-height="200px">
-
+    <g-cascader :source="cascaderData" popover-height="200px" :selected="selectedCascader"
+                @update:selected="selectedCascader = $event">
+      1
     </g-cascader>
 
     <g-collapse :selected.sync="selectedCollapse" single>
@@ -202,6 +203,7 @@
         message: '',
         selectedTab: 'sports',
         selectedCollapse: ['2', '3'],
+        selectedCascader: [],
         cascaderData: [
           {
             name: '江苏',

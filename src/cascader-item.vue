@@ -1,13 +1,15 @@
 <template>
   <div class="g-cascader-item" :style="{height: height}">
+    {{this.selected}}
     <div class="left">
-      <div class="label" v-for="(item,index) in items" :key="index" @click="leftSelected = item">
+      <div class="label" v-for="(item,index) in items" :key="index" @click="clickLabel(item)">
         {{item.name}}
         <g-icon name="right" class="icon" v-if="item.children"></g-icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
-      <g-cascader-item :items="rightItems" :height="height"></g-cascader-item>
+      <g-cascader-item :items="rightItems" :height="height" :level="level+1" :selected="selected"
+                       @update:selected="updateSelected"></g-cascader-item>
     </div>
   </div>
 </template>
@@ -23,20 +25,39 @@
       },
       height: {
         type: String
-      }
-    },
-    data() {
-      return {
-        leftSelected: null
+      },
+      selected: {
+        type: Array,
+        default: () => {
+          return []
+        }
+      },
+      level: {
+        type: Number,
+        default: 0
       }
     },
     computed: {
       rightItems() {
-        if (this.leftSelected && this.leftSelected.children) {
-          return this.leftSelected.children
+        let selected = this.selected[this.level]
+        if (selected && selected.children) {
+          return selected.children
         } else {
           return null
         }
+      }
+    },
+    methods: {
+      clickLabel(item) {
+        // this.$set(this.selected, this.level, item)
+        let copySelected = JSON.parse(JSON.stringify(this.selected))
+        copySelected[this.level] = item
+        // 把不要的数据删掉再传
+        copySelected.splice(this.level + 1)
+        this.$emit('update:selected', copySelected)
+      },
+      updateSelected(newSelected) {
+        this.$emit('update:selected', newSelected)
       }
     }
   }
@@ -60,6 +81,7 @@
       padding: 0.3em 1em;
       display: flex;
       align-items: center;
+      cursor: pointer;
     }
     .icon {
       margin-left: 0.5em;
