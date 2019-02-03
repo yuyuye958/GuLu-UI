@@ -1,6 +1,5 @@
 <template>
   <div class="g-cascader-item" :style="{height: height}">
-    {{this.selected}}
     <div class="left">
       <div class="label" v-for="(item,index) in items" :key="index" @click="clickLabel(item)">
         {{item.name}}

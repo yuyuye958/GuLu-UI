@@ -1,9 +1,10 @@
 <template>
   <div style="margin: 50px">
-    <g-cascader :source="cascaderData" popover-height="200px" :selected="selectedCascader"
-                @update:selected="selectedCascader = $event">
-      1
-    </g-cascader>
+    <div style="margin-bottom: 10px;">
+      <g-cascader :source="cascaderData" popover-height="150px" :selected="selectedCascader"
+                  @update:selected="selectedCascader = $event">
+      </g-cascader>
+    </div>
 
     <g-collapse :selected.sync="selectedCollapse" single>
       <g-collapse-item title="标题1" name="1">collapse1</g-collapse-item>
