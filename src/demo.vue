@@ -173,6 +173,17 @@
 
   Vue.use(Plugin)
 
+  // 省市级的数据库
+  import db from './db'
+
+  function ajax(parentId = 0) {   // 如果不传值就为0
+    return db.filter((item) => {
+      return item.parent_id === parentId
+    })
+  }
+
+  console.log(ajax())
+
   export default {
     name: 'demo',
     components: {
@@ -205,46 +216,7 @@
         selectedTab: 'sports',
         selectedCollapse: ['2', '3'],
         selectedCascader: [],
-        cascaderData: [
-          {
-            name: '江苏',
-            children: [
-              {
-                name: '苏州',
-                children: [
-                  {name: '苏州1'},
-                  {name: '苏州2'}
-                ]
-              },
-              {
-                name: '南通',
-                children: [
-                  {name: '南通1'},
-                  {name: '南通2'}
-                ]
-              }
-            ]
-          },
-          {
-            name: '浙江',
-            children: [
-              {
-                name: '杭州',
-                children: [
-                  {name: '杭州1'},
-                  {name: '杭州2'}
-                ]
-              },
-              {
-                name: '宁波',
-                children: [
-                  {name: '宁波1'},
-                  {name: '宁波2'}
-                ]
-              }
-            ]
-          }
-        ]
+        cascaderData: ajax()
       }
     },
     methods: {
