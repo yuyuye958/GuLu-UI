@@ -1,8 +1,8 @@
 <template>
   <div style="margin: 50px">
     <div style="margin-bottom: 10px;">
-      <g-cascader :source="cascaderData" popover-height="150px" :selected="selectedCascader"
-                  @update:selected="selectedCascader = $event">
+      <g-cascader :source.sync="cascaderData" popover-height="150px" :selected.sync="selectedCascader"
+                  :load-data="loadData">
       </g-cascader>
     </div>
 
@@ -173,16 +173,17 @@
 
   Vue.use(Plugin)
 
-  // 省市级的数据库
+  // 省市区级的数据库
   import db from './db'
 
   function ajax(parentId = 0) {   // 如果不传值就为0
-    return db.filter((item) => {
-      return item.parent_id === parentId
+    return new Promise((resolve, reject) => {
+      let result = db.filter((item) => {
+        return item.parent_id === parentId
+      })
+      resolve(result)
     })
   }
-
-  console.log(ajax())
 
   export default {
     name: 'demo',
@@ -216,8 +217,13 @@
         selectedTab: 'sports',
         selectedCollapse: ['2', '3'],
         selectedCascader: [],
-        cascaderData: ajax()
+        cascaderData: []
       }
+    },
+    created() {
+      ajax(0).then((result) => {
+        this.cascaderData = result
+      })
     },
     methods: {
       showToast() {
@@ -233,6 +239,12 @@
           enableHtml: false
         })
       },
+      loadData(lastSelected, callback) {
+        let {id} = lastSelected
+        ajax(id).then((result) => {
+          callback(result)
+        })
+      }
     }
   }
 

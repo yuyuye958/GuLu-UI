@@ -29,6 +29,9 @@
         default: () => {
           return []
         }
+      },
+      loadData: {
+        type: Function
       }
     },
     data() {
@@ -46,6 +49,52 @@
     methods: {
       updateSelected(newSelected) {
         this.$emit('update:selected', newSelected)
+        // 用户选中的最后一项
+        let lastSelected = newSelected[newSelected.length - 1]
+
+        // 分治法
+        // 简单处理
+        let simple = (children, id) => {
+          return children.filter((item) => {
+            return item.id === id
+          })[0]
+        }
+        // 复杂处理，递归
+        let complex = (children, id) => {
+          let hasNoChildren = []
+          let hasChildren = []
+          // 遍历数组，根据有没有children来放到两个数组里来做不同的处理
+          children.forEach((item) => {
+            if (item.children) {
+              hasChildren.push(item)
+            } else {
+              hasNoChildren.push(item)
+            }
+          })
+          let found = simple(hasNoChildren, id)
+          if (found) {
+            return found
+          } else {
+            found = simple(hasChildren, id)
+            if (found) {
+              return found
+            } else {
+              for (let i = 0; i < hasChildren.length; i++) {
+                found = complex(hasChildren[i].children, id)
+                if (found) {
+                  return found
+                }
+              }
+              return undefined
+            }
+          }
+        }
+
+        let updateSource = (result) => {   // 回调
+          let toUpdate = complex(this.source, lastSelected.id)
+          this.$set(toUpdate, 'children', result)
+        }
+        this.loadData(lastSelected, updateSource)
       }
     }
   }
